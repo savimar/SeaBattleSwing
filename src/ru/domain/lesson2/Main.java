@@ -23,11 +23,17 @@ public class Main {
         if (!winner) System.out.println("Поздравляю, Вы победили!");
         else System.out.println("К сожалению, Вы проиграли...");
         System.out.println("Корабли были расположены так:");
+        System.out.println("   A B C D E F G H I K");
+        int i = 1;
         for (Cell[] cell : cells) {
+            if (i == 10) System.out.print((i + " "));
+            else System.out.print(i + "  ");
+
             for (Cell cell1 : cell) {
-                System.out.print(cell1.value);
+                System.out.print(cell1.value + " ");
             }
             System.out.println();
+            i++;
         }
 
     }
