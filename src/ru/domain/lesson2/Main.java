@@ -17,17 +17,21 @@ public class Main {
         cells = field.setCells(cells);
         cells = field.setShips(cells);
         System.out.println("Корабли созданы");
+        System.out.println();
 
         Random r = new Random();
         boolean winner = r.nextBoolean();
         if (!winner) System.out.println("Поздравляю, Вы победили!");
         else System.out.println("К сожалению, Вы проиграли...");
-        System.out.println("Корабли были расположены так:");
-        System.out.println("   A B C D E F G H I K");
+        System.out.println();
+        System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля )");
+        System.out.println();
+        System.out.println("    А Б В Г Д Е Ж З И К");
+        System.out.println();
         int i = 1;
         for (Cell[] cell : cells) {
-            if (i == 10) System.out.print((i + " "));
-            else System.out.print(i + "  ");
+            if (i == 10) System.out.print((i + "  "));
+            else System.out.print(i + "   ");
 
             for (Cell cell1 : cell) {
                 System.out.print(cell1.value + " ");
