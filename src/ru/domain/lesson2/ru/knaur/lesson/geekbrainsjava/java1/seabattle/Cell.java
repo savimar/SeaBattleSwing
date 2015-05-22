@@ -1,4 +1,4 @@
-package ru.domain.lesson2;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 
 
 public class Cell {
@@ -31,7 +31,4 @@ public class Cell {
         this.y = y;
     }
 }
-
-
-
 
