@@ -7,8 +7,7 @@ public class Field {
     final int COUNT_SHIPS2 = 3;
     final int COUNT_SHIPS3 = 2;
     final int COUNT_SHIPS4 = 1;
-
-
+  //  public static Cell[][] cells = null;
 
 
     public Cell[][] setCells(Cell[][] cells) {
@@ -21,10 +20,10 @@ public class Field {
     }
 
     public Cell[][] setShips(Cell[][] cells) {
-        cells = setShips(cells, COUNT_SHIPS4, 4); // устанавливаем 4-палубный корабль
-        cells = setShips(cells, COUNT_SHIPS3, 3); // 3-палубный и.т.п.
-        cells = setShips(cells, COUNT_SHIPS2, 2);
-        cells = setShips(cells, COUNT_SHIPS1, 1);
+        setShips(cells, COUNT_SHIPS4, 4); // устанавливаем 4-палубный корабль
+        setShips(cells, COUNT_SHIPS3, 3); // 3-палубный и.т.п.
+        setShips(cells, COUNT_SHIPS2, 2);
+        setShips(cells, COUNT_SHIPS1, 1);
 
         return cells;
     }
@@ -35,7 +34,7 @@ public class Field {
         while (i <= countShip) {
             Ship ship = setShip(countDecks);
             ship.isShipDelivered = true;
-            cells = setOutside(cells, ship);
+            setOutside(cells, ship);
             Cell cellL = ship.getLeftUp();
             Cell cellR = ship.getRightDown();
             if (cells[cellL.getX()][cellL.getY()].value == 'X' && cells[cellR.getX()][cellR.getY()].value == 'X' && ship.isShipDelivered) {
@@ -81,7 +80,7 @@ public class Field {
     }
 
 
-    public Cell[][] setRouteTrue(Cell[][] cells, int x, Ship ship, int y) { //установка горизонтального корабля
+    public void setRouteTrue(Cell[][] cells, int x, Ship ship, int y) { //установка горизонтального корабля
         int desks = ship.getDesk();
         for (int i = 0; i < desks; i++) {
             if (x > 6 && y > 6 && desks == 4) { // если корабль выходит за пределы поля
@@ -135,10 +134,10 @@ public class Field {
             }
         }
 
-        return cells;
+
     }
 
-    public Cell[][] setRouteFalse(Cell[][] cells, int x, Ship ship, int y) { // установка вертикального корабля
+    public void setRouteFalse(Cell[][] cells, int x, Ship ship, int y) { // установка вертикального корабля
         int desks = ship.getDesk();
         for (int i = 0; i < desks; i++) {
             if (x > 6 && y > 6 && desks == 4) { //если корабль выходит за пределы поля
@@ -191,7 +190,7 @@ public class Field {
             }
         }
 
-        return cells;
+
 
     }
 

@@ -4,40 +4,38 @@ import java.util.Scanner;
 
 
 public class Game {
-    public static Cell[][] cells = new Cell[10][10];
+    public static Cell[][] cellsComputer = new Cell[10][10];
     public static Cell[][] cellsPlayer = new Cell[10][10];
 
     public void start() {
         System.out.println("Введите свое имя: ");
         Scanner scanner = new Scanner(System.in);
-        
-     
-        
-        
+
+
         Player player = new Player(scanner.nextLine());
         System.out.println("Здравствуй, " + player.getName() + "!");
-        
+
         System.out.println("Если вы хотите играть в автоматическом режиме, нажмите 1, если в ручном - 2");
         Scanner scannerInt = new Scanner(System.in);
-        
-        if (scannerInt.nextInt() == 1) ;
-        else if (scannerInt.nextInt() == 2) System.out.println("Пока ручной режим игры не реализованю Ждите обновлений! Начинается автоматическая игра");
+
+
+       if (scannerInt.nextInt() == 2) System.out.println("Пока ручной режим игры не реализованю Ждите обновлений! Начинается автоматическая игра");
         else System.out.println("Вы выбрали неверный вариант игры, начинаем автоматическую игру");
-        
+
         System.out.println("Начинаем игру");
 
         Field field = new Field();
 
-        cells = field.setCells(cells); //вводим игровое поле компьютера
+        cellsComputer = field.setCells(cellsComputer); //вводим игровое поле компьютера
 
 
         System.out.println("Корабли созданы");
         System.out.println();
         System.out.println("Поле расположено так:");
 
-        printField(cells);
+        printField(cellsComputer);
 
-        cells = field.setShips(cells); //устанавливаем корабли на поле компьютера
+        cellsComputer = field.setShips(cellsComputer); //устанавливаем корабли на поле компьютера
         System.out.println();
         System.out.println("Введите координаты выстрела: (сначала буква, потом цифра)");
         boolean isWinner = false;
@@ -47,7 +45,7 @@ public class Game {
         while (!isWinner)
 
         {
-            Scanner sc= new Scanner(System.in);
+            Scanner sc = new Scanner(System.in);
             String s = sc.nextLine();
             Cell shootCell = field.shootCell(s);//получаем координаты выстрела, введееного игроком
             if (shootCell.getY() > 9 || shootCell.getY() > 9) {
@@ -55,23 +53,23 @@ public class Game {
                 isWinner = false;
                 continue;
             }
-            switch (cells[shootCell.getX()][shootCell.getY()].value) { //проверка координатЮ введенных игроком
+            switch (cellsComputer[shootCell.getX()][shootCell.getY()].value) { //проверка координатЮ введенных игроком
                 case 'X':
                     System.out.println("Попал");
                     player.score++;
-                    cells[shootCell.getX()][shootCell.getY()].value = '+';
+                    cellsComputer[shootCell.getX()][shootCell.getY()].value = '+';
                     cellsPlayer[shootCell.getX()][shootCell.getY()].value = '+';
                     break;
                 default:
                     System.out.println("Мимо");
-                    cells[shootCell.getX()][shootCell.getY()].value = '-';
+                    cellsComputer[shootCell.getX()][shootCell.getY()].value = '-';
                     cellsPlayer[shootCell.getX()][shootCell.getY()].value = '-';
                     scoreComputer++;
                     break;
             }
 
             printField(cellsPlayer); // показываем полу игрока
-            isWinner = isExit(cells);// проверка на конец игры
+            isWinner = isExit(cellsComputer);// проверка на конец игры
 
             if (!isWinner) {
                 System.out.println();
@@ -82,6 +80,7 @@ public class Game {
 
         if (isWinner) //конец игры
         {
+            player.score *= 2.5;
             if (player.score > scoreComputer)
                 System.out.println("Поздравляю, Вы победили! У Вас " + player.score + " очков. У противника " + scoreComputer + " очков");
             else if (player.score == scoreComputer)
@@ -90,7 +89,7 @@ public class Game {
                 System.out.println("К сожалению, Вы проиграли...У Вас " + player.score + " очков. У противника " + scoreComputer + " очков");
             System.out.println();
             System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
-            printField(cells); //выводим поле компьютера
+            printField(cellsComputer); //выводим поле компьютера
         }
     }
 
