@@ -3,10 +3,12 @@ package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 import java.util.Random;
 
 public class Field {
-    final int COUNTSHIPS1 = 4;
-    final int COUNTSHIPS2 = 3;
-    final int COUNTSHIPS3 = 2;
-    final int COUNTSHIPS4 = 1;
+    final int COUNT_SHIPS1 = 4;
+    final int COUNT_SHIPS2 = 3;
+    final int COUNT_SHIPS3 = 2;
+    final int COUNT_SHIPS4 = 1;
+
+
 
 
     public Cell[][] setCells(Cell[][] cells) {
@@ -19,10 +21,10 @@ public class Field {
     }
 
     public Cell[][] setShips(Cell[][] cells) {
-        cells = setShips(cells, COUNTSHIPS4, 4); // устанавливаем 4-палубный корабль
-        cells = setShips(cells, COUNTSHIPS3, 3); // 3-палубный и.т.п.
-        cells = setShips(cells, COUNTSHIPS2, 2);
-        cells = setShips(cells, COUNTSHIPS1, 1);
+        cells = setShips(cells, COUNT_SHIPS4, 4); // устанавливаем 4-палубный корабль
+        cells = setShips(cells, COUNT_SHIPS3, 3); // 3-палубный и.т.п.
+        cells = setShips(cells, COUNT_SHIPS2, 2);
+        cells = setShips(cells, COUNT_SHIPS1, 1);
 
         return cells;
     }

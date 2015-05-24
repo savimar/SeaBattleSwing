@@ -3,18 +3,31 @@ package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 import java.util.Scanner;
 
 
-
 public class Game {
+    public static Cell[][] cells = new Cell[10][10];
+    public static Cell[][] cellsPlayer = new Cell[10][10];
+
     public void start() {
         System.out.println("Введите свое имя: ");
         Scanner scanner = new Scanner(System.in);
-
+        
+     
+        
+        
         Player player = new Player(scanner.nextLine());
         System.out.println("Здравствуй, " + player.getName() + "!");
+        
+        System.out.println("Если вы хотите играть в автоматическом режиме, нажмите 1, если в ручном - 2");
+        Scanner scannerInt = new Scanner(System.in);
+        
+        if (scannerInt.nextInt() == 1) ;
+        else if (scannerInt.nextInt() == 2) System.out.println("Пока ручной режим игры не реализованю Ждите обновлений! Начинается автоматическая игра");
+        else System.out.println("Вы выбрали неверный вариант игры, начинаем автоматическую игру");
+        
         System.out.println("Начинаем игру");
 
         Field field = new Field();
-        Cell[][] cells = new Cell[10][10];
+
         cells = field.setCells(cells); //вводим игровое поле компьютера
 
 
@@ -29,12 +42,13 @@ public class Game {
         System.out.println("Введите координаты выстрела: (сначала буква, потом цифра)");
         boolean isWinner = false;
         int scoreComputer = 0;
-        Cell[][] cellsPlayer = field.setCells(new Cell[10][10]); //вводим поле игрока
+
+        cellsPlayer = field.setCells(cellsPlayer); //вводим поле игрока
         while (!isWinner)
 
         {
-            Scanner scanner1 = new Scanner(System.in);
-            String s = scanner1.nextLine();
+            Scanner sc= new Scanner(System.in);
+            String s = sc.nextLine();
             Cell shootCell = field.shootCell(s);//получаем координаты выстрела, введееного игроком
             if (shootCell.getY() > 9 || shootCell.getY() > 9) {
                 System.out.println("Вы ввели неправильные координаты, введите еще раз");
@@ -70,7 +84,8 @@ public class Game {
         {
             if (player.score > scoreComputer)
                 System.out.println("Поздравляю, Вы победили! У Вас " + player.score + " очков. У противника " + scoreComputer + " очков");
-            else  if(player.score == scoreComputer) System.out.println("Ничья, У вас и компьютера " + scoreComputer + "очков");
+            else if (player.score == scoreComputer)
+                System.out.println("Ничья, У вас и компьютера " + scoreComputer + "очков");
             else
                 System.out.println("К сожалению, Вы проиграли...У Вас " + player.score + " очков. У противника " + scoreComputer + " очков");
             System.out.println();
