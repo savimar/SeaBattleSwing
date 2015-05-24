@@ -19,7 +19,8 @@ public class Game {
         Scanner scannerInt = new Scanner(System.in);
 
 
-       if (scannerInt.nextInt() == 2) System.out.println("Пока ручной режим игры не реализованю Ждите обновлений! Начинается автоматическая игра");
+        if (scannerInt.nextInt() == 2)
+            System.out.println("Пока ручной режим игры не реализованю Ждите обновлений! Начинается автоматическая игра");
         else System.out.println("Вы выбрали неверный вариант игры, начинаем автоматическую игру");
 
         System.out.println("Начинаем игру");
@@ -27,7 +28,7 @@ public class Game {
         Field field = new Field();
 
         cellsComputer = field.setCells(cellsComputer); //вводим игровое поле компьютера
-
+        cellsPlayer = field.setCells(cellsPlayer); //вводим поле игрока
 
         System.out.println("Корабли созданы");
         System.out.println();
@@ -41,7 +42,7 @@ public class Game {
         boolean isWinner = false;
         int scoreComputer = 0;
 
-        cellsPlayer = field.setCells(cellsPlayer); //вводим поле игрока
+
         while (!isWinner)
 
         {

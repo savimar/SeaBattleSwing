@@ -7,7 +7,7 @@ public class Field {
     final int COUNT_SHIPS2 = 3;
     final int COUNT_SHIPS3 = 2;
     final int COUNT_SHIPS4 = 1;
-  //  public static Cell[][] cells = null;
+
 
 
     public Cell[][] setCells(Cell[][] cells) {
@@ -28,7 +28,7 @@ public class Field {
         return cells;
     }
 
-    public Cell[][] setShips(Cell[][] cells, int countShip, int countDecks) { //установка корабля на поле
+    public void setShips(Cell[][] cells, int countShip, int countDecks) { //установка корабля на поле
 
         int i = 1;
         while (i <= countShip) {
@@ -41,7 +41,7 @@ public class Field {
                 i++;
             }
         }
-        return cells;
+
     }
 
     public Ship setShip(int desk) {
