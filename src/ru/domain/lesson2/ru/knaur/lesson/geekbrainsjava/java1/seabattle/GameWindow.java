@@ -97,9 +97,9 @@ public class GameWindow {
             panel1.setLayout(new BorderLayout());
             panel1.add(panelSub1, BorderLayout.CENTER);
 
-            panelSub1Horizontal = new MyJPanel("1", 400, 20);
+       panelSub1Horizontal = new MyJPanel("1", 400, 20);
 
-            panelSub1Horizontal.setLayout(new GridLayout(0, 1, 2, 2));
+            panelSub1Horizontal.setLayout(new BoxLayout(panelSub1Horizontal, BoxLayout.X_AXIS));
 
 
              panel3 = new MyJPanel("panel3", 50, 15);
@@ -115,23 +115,49 @@ public class GameWindow {
             panelSub1.setLayout(new GridLayout(10,10,2,2));
 
             Box boxH = Box.createHorizontalBox();
+//            boxH.setLayout(new BoxLayout(panelSub1, BoxLayout.X_AXIS));
+    //       boxH.setLayout(new BoxLayout(panelSub1, BoxLayout.X_AXIS));
           //  box.setLayout(new FlowLayout(FlowLayout.LEADING));
             // Button buttonA = MyJButton.get
             //    box.add(MyJButton.getB);
             //
+            boxH.add(Box.createHorizontalStrut(7));
+            boxH.add(Box.createHorizontalGlue());
+              boxH.updateUI();
+//            boxH.add(Box.createRigidArea(new Dimension(15, 5)));
             boxH.add(new MyJButton(" ", true));
+            boxH.add(Box.createGlue());
             boxH.add(new MyJButton("А", true));
+            boxH.add(Box.createGlue());
+                boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("Б", true));
+            boxH.add(Box.createGlue());
+                boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("В", true));
+            boxH.add(Box.createGlue());
+                boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("Г", true));
-            boxH.add(new MyJButton("Д", true));
+            boxH.add(Box.createGlue());
+            boxH.add(Box.createHorizontalStrut(7));
+                      boxH.add(new MyJButton("Д", true));
+              boxH.add(Box.createGlue());
+              boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("Е", true));
+            boxH.add(Box.createGlue());
+                boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("Ж", true));
+                boxH.add(Box.createHorizontalStrut(7));
+              boxH.add(Box.createGlue());
             boxH.add(new MyJButton("З", true));
+                boxH.add(Box.createHorizontalStrut(7));
+              boxH.add(Box.createGlue());
             boxH.add(new MyJButton("И", true));
+            boxH.add(Box.createGlue());
+                boxH.add(Box.createHorizontalStrut(7));
             boxH.add(new MyJButton("К", true));
+              boxH.add(Box.createGlue());
 
-            panelSub1Horizontal.add(boxH);
+        panelSub1Horizontal.add(boxH);
            /*Component horizontalGlue = Box.createHorizontalGlue();
             panel1.add(horizontalGlue);
             panel1.setMaximumSize(new Dimension(30, 30));*/
@@ -141,15 +167,26 @@ public class GameWindow {
 
             Box boxV = Box.createVerticalBox();
             boxV.add(new MyJButton(" 1", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 2", true));
+             boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 3", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 4", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 5", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 6", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 7", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 8", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton(" 9", true));
+              boxV.add(Box.createGlue());
             boxV.add(new MyJButton("10", true));
+              boxV.add(Box.createGlue());
+
 
             panel1.add(boxV, BorderLayout.WEST);
 
