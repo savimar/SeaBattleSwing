@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class GameWindow {
 
-    private MyJButton btnAdd;
+    private MyJButton start;
     private MyJButton boxBtn;
     private MyJButton btnDivide;
     private MyJButton btnMultiply;
@@ -25,7 +25,7 @@ public class GameWindow {
     private MyJPanel panel3;
     private MyJPanel panelSub1;
     private MyJPanel panelSub1Horizontal;
-     private MyJPanel panelSub1Vertical;
+    private MyJPanel panelSub1Vertical;
 
     private MyJPanel panelSub2;
 
@@ -65,11 +65,7 @@ public class GameWindow {
 
     private void createLabels() {
         labelChislo1 = new JLabel("А Б В Г Д Е Ж З И К");
-        //"<html><b>OK</font></b></html>");
-        //  String text = "<html>  <<p align=\"justify\"> А Б В Г Д Е Ж З И К </p></html>";
-        //    String text = "<html>  <ul> <li>А Б В Г Д Е Ж З И К </li><ul></html>";
-        // Font font = new Font()
-        //      labelChislo1.setText(text);
+
         labelChislo2 = new JLabel("Число 2");
         labelResult = new JLabel("Результат");
     }
@@ -85,8 +81,9 @@ public class GameWindow {
     }
 
     private void createButtons() {
-        String name = "";
-        btnAdd = new MyJButton("*");
+        start = new MyJButton("Старт");
+        start.setSize(new Dimension(200,50));
+
 
     }
 
@@ -115,104 +112,35 @@ public class GameWindow {
         panelSub1Horizontal.add((new MyJButton("К", true)));
 
 
-
         panel3 = new MyJPanel("panel3", 50, 15);
         panel3.setPreferredSize(new Dimension(100, 30));
         panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
-        panel3.add(labelResult);
-        panel3.add(jtxtResult);
+      //  panel3.add(labelResult);
+        panel3.add(start);
+      //  panel3.add(jtxtResult);
+
 
 
         panelSub1.setLayout(new GridLayout(10, 10, 2, 2));
 
-      //  Box boxH = Box.createHorizontalBox();
-//            boxH.setLayout(new BoxLayout(panelSub1, BoxLayout.X_AXIS));
-        //       boxH.setLayout(new BoxLayout(panelSub1, BoxLayout.X_AXIS));
-        //  box.setLayout(new FlowLayout(FlowLayout.LEADING));
-        // Button buttonA = MyJButton.get
-        //    box.add(MyJButton.getB);
-        //
-      /*  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(Box.createHorizontalGlue());
-        boxH.updateUI();
-//            boxH.add(Box.createRigidArea(new Dimension(15, 5)));
-        boxH.add(new MyJButton(" ", true));
-        boxH.add(Box.createGlue());
-        boxH.add(new MyJButton("А", true));
-        boxH.add(Box.createGlue());
-      //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("Б", true));
-        boxH.add(Box.createGlue());
-      //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("В", true));
-        boxH.add(Box.createGlue());
-      //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("Г", true));
-        boxH.add(Box.createGlue());
-      //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("Д", true));
-        boxH.add(Box.createGlue());
-    //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("Е", true));
-        boxH.add(Box.createGlue());
-       /// boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("Ж", true));
-       // boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(Box.createGlue());
-        boxH.add(new MyJButton("З", true));
-       // boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(Box.createGlue());
-        boxH.add(new MyJButton("И", true));
-        boxH.add(Box.createGlue());
-      //  boxH.add(Box.createHorizontalStrut(7));
-        boxH.add(new MyJButton("К", true));
-        boxH.add(Box.createGlue());
 
-        panelSub1Horizontal.add(boxH);*/
-           /*Component horizontalGlue = Box.createHorizontalGlue();
-            panel1.add(horizontalGlue);
-            panel1.setMaximumSize(new Dimension(30, 30));*/
         panel1.add(panelSub1Horizontal, BorderLayout.NORTH);
 
 
         panelSub1Vertical = new MyJPanel("1", 400, 20);
 
-       panelSub1Vertical.setLayout(new GridLayout(10, 1, 2, 2));
-       // panelSub1Vertical.add(new MyJButton(" ", true));
+        panelSub1Vertical.setLayout(new GridLayout(10, 1, 2, 2));
+        // panelSub1Vertical.add(new MyJButton(" ", true));
         panelSub1Vertical.add(new MyJButton("1", true));
-         panelSub1Vertical.add(new MyJButton("2", true));
-         panelSub1Vertical.add(new MyJButton("3", true));
+        panelSub1Vertical.add(new MyJButton("2", true));
+        panelSub1Vertical.add(new MyJButton("3", true));
         panelSub1Vertical.add(new MyJButton("4", true));
-       panelSub1Vertical.add(new MyJButton("5", true));
+        panelSub1Vertical.add(new MyJButton("5", true));
         panelSub1Vertical.add(new MyJButton("6", true));
-         panelSub1Vertical.add(new MyJButton("7", true));
-         panelSub1Vertical.add(new MyJButton("8", true));
+        panelSub1Vertical.add(new MyJButton("7", true));
+        panelSub1Vertical.add(new MyJButton("8", true));
         panelSub1Vertical.add(new MyJButton("9", true));
-         panelSub1Vertical.add((new MyJButton("10", true)));
-/*
-        Box boxV = Box.createVerticalBox();
-        boxV.add(new MyJButton(" 1", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 2", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 3", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 4", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 5", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 6", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 7", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 8", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton(" 9", true));
-        boxV.add(Box.createGlue());
-        boxV.add(new MyJButton("10", true));
-        boxV.add(Box.createGlue());*/
-
-
+        panelSub1Vertical.add((new MyJButton("10", true)));
 
         panel1.add(panelSub1Vertical, BorderLayout.WEST);
 
@@ -233,6 +161,7 @@ public class GameWindow {
 
         for (int i = 0; i < 100; i++) {
             panelSub1.add(new Button("*"));
+            panel1.add(jtxtResult, BorderLayout.SOUTH);
         }
        /* for (int i = 0; i < 100; i++) {
             panel2.add(new Button("*"));
