@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
