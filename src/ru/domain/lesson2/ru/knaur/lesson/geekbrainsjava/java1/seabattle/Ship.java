@@ -1,4 +1,5 @@
 package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+
 public class Ship {
     private int desk; //количество палуб
     private Cell leftUp; //левая верхняя точка корабля

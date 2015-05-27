@@ -1,22 +1,21 @@
 package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 
 public class GameController {
-    public volatile static boolean isShoot = false;
-    public enum playerShoot {МИМО, ПОПАЛ, НЕТ_ВЫСТРЕЛА}
+    public enum playerShoot {МИМО, ПОПАЛ, НЕТ_ВЫСТРЕЛА} //перечисление выстрелов
 
 
-//синглетон
-  private static GameController instance;
+    //синглетон
+    private static GameController instance;
 
-  private GameController(){}
-
-  public static synchronized GameController getInstance(){
-    if(instance == null){
-      instance = new GameController( );
+    private GameController() {
     }
-    return instance;
-  }
 
+    public static synchronized GameController getInstance() {
+        if (instance == null) {
+            instance = new GameController();
+        }
+        return instance;
+    }
 
 
 }

@@ -15,9 +15,8 @@ public class ActionButton implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (!isStart) {
             String s = e.getActionCommand();
-            setShootPlayer(this.x, this.y, this);
-        }
-       else if (isStart && (Game.cellsComputer[0][0] == null)) {
+            setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрока
+        } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
             Game game = new Game();
             game.start(); //начинаем игру
         }

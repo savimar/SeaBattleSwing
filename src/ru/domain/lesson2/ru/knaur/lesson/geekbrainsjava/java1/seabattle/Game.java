@@ -6,9 +6,8 @@ public class Game {
     public static int scoreComputer = 0;
 
 
-
     public void start() {
-    System.out.println("Начинаем игру");
+        System.out.println("Начинаем игру");
 
         Field field = new Field();
 
