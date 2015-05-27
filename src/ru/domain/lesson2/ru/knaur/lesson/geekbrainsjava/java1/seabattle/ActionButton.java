@@ -11,11 +11,16 @@ public class ActionButton implements ActionListener {
     public static boolean isWinner = false;
 
 
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        String s = e.getActionCommand();
-        setShootPlayer(this.x, this.y, this);
+        if (!isStart) {
+            String s = e.getActionCommand();
+            setShootPlayer(this.x, this.y, this);
+        }
+       else if (isStart && (Game.cellsComputer[0][0] == null)) {
+            Game game = new Game();
+            game.start(); //начинаем игру
+        }
     }
 
     public ActionButton(int x, int y) {
