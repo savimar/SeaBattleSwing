@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 public class GameWindow {
 
     private MyJButton start;
-    private MyJButton boxBtn;
+    public MyJButton btnPlay;
     private MyJButton btnDivide;
     private MyJButton btnMultiply;
     private JLabel labelChislo1;
@@ -26,6 +26,7 @@ public class GameWindow {
     private MyJPanel panelSub1;
     private MyJPanel panelSub1Horizontal;
     private MyJPanel panelSub1Vertical;
+    public MyJButton[] myJButtons = new MyJButton[100];
 
     private MyJPanel panelSub2;
 
@@ -82,7 +83,23 @@ public class GameWindow {
 
     private void createButtons() {
         start = new MyJButton("Старт");
-        start.setSize(new Dimension(200,50));
+        start.setSize(new Dimension(200, 50));
+        start.addActionListener(new ActionButton(true));
+        int k = 0;
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                btnPlay = new MyJButton("*");
+                //  panelSub1.add(btnPlay);
+
+                myJButtons[k] = btnPlay;
+                k++;
+                ActionButton actionButton = new ActionButton(i, j);
+                btnPlay.addActionListener(actionButton);
+               if(actionButton.getShoot.equals(GameController.playerShoot.ПОПАЛ)) btnDivide.setText("+");
+                else if (actionButton.getShoot.equals(GameController.playerShoot.МИМО)) btnDivide.setText("-");
+
+            }
+        }
 
 
     }
@@ -93,13 +110,18 @@ public class GameWindow {
 
         panelSub1 = new MyJPanel("Sub1", 400, 400);
         panelSub1.setPreferredSize(new Dimension(400, 400));
+        panelSub1.setLayout(new GridLayout(10, 10, 2, 2));
+        for (MyJButton myJButton : myJButtons) {
+            panelSub1.add(myJButton);
+        }
+
         panel1.setLayout(new BorderLayout());
         panel1.add(panelSub1, BorderLayout.CENTER);
 
         panelSub1Horizontal = new MyJPanel("1", 400, 20);
 
         panelSub1Horizontal.setLayout(new GridLayout(1, 11, 2, 2));
-        panelSub1Horizontal.add(new MyJButton(" ", true));
+        panelSub1Horizontal.add(new MyJButton());
         panelSub1Horizontal.add(new MyJButton("A", true));
         panelSub1Horizontal.add(new MyJButton("Б", true));
         panelSub1Horizontal.add(new MyJButton("В", true));
@@ -115,13 +137,9 @@ public class GameWindow {
         panel3 = new MyJPanel("panel3", 50, 15);
         panel3.setPreferredSize(new Dimension(100, 30));
         panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
-      //  panel3.add(labelResult);
+        //  panel3.add(labelResult);
         panel3.add(start);
-      //  panel3.add(jtxtResult);
-
-
-
-        panelSub1.setLayout(new GridLayout(10, 10, 2, 2));
+        //  panel3.add(jtxtResult);
 
 
         panel1.add(panelSub1Horizontal, BorderLayout.NORTH);
@@ -145,7 +163,7 @@ public class GameWindow {
         panel1.add(panelSub1Vertical, BorderLayout.WEST);
 
 
-
+        panel1.add(jtxtResult, BorderLayout.SOUTH);
 
         /*
         panel1.add(jtxtChislo1);
@@ -159,10 +177,7 @@ public class GameWindow {
         panel2.add(btnDivide);
         */
 
-        for (int i = 0; i < 100; i++) {
-            panelSub1.add(new Button("*"));
-            panel1.add(jtxtResult, BorderLayout.SOUTH);
-        }
+
        /* for (int i = 0; i < 100; i++) {
             panel2.add(new Button("*"));
               }

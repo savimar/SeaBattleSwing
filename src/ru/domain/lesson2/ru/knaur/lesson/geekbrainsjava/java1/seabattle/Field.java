@@ -194,8 +194,8 @@ public class Field {
 
     }
 
-    public Cell shootCell(String s) { //получаем координы ячейки, которые ввел игрок
-        String subS1 = s.substring(0, 1);
+    public Cell shootCell(int x, int y) { //получаем координы ячейки, которые ввел игрок
+       /* String subS1 = s.substring(0, 1);
         int x = 0;
         int y;
 
@@ -242,7 +242,7 @@ public class Field {
             else x = 10;
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         return new Cell(x, y);
     }
 }
