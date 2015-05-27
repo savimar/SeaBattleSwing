@@ -1,9 +1,10 @@
 package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+
 import javax.swing.*;
 import java.awt.*;
 
 
-public class MyJDialog extends JDialog{
+public class MyJDialog extends JDialog {
 
     public MyJDialog(String title, int width, int height) {
         super.setTitle(title);
@@ -11,10 +12,8 @@ public class MyJDialog extends JDialog{
         super.setLocationRelativeTo(null);
         super.setVisible(true);
         super.setLayout(new FlowLayout());
-
-        // нельзя так делать!
-//        super.setDefaultCloseOperation(JDialog.EXIT_ON_CLOSE);
     }
+
 
     public MyJDialog(String title, int width, int height, Component comp) {
         this(title, width, height);
@@ -22,7 +21,7 @@ public class MyJDialog extends JDialog{
 
     }
 
-     public MyJDialog(String title, int width, int height, LayoutManager layout) {
+    public MyJDialog(String title, int width, int height, LayoutManager layout) {
         super.setTitle(title);
         super.setSize(width, height);
         super.setLocationRelativeTo(null);
@@ -30,8 +29,6 @@ public class MyJDialog extends JDialog{
         super.setLayout(layout);
         super.setIconImage(new ImageIcon("icon.png").getImage());
     }
-
-
 
 }
 
