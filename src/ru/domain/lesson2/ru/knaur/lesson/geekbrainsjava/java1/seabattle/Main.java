@@ -5,9 +5,9 @@ public class Main {
 
 
         GameWindow gameWindow = new GameWindow();
-        gameWindow.init();
-          Game game = new Game();
-          game.start(); //начинаем игру
+        gameWindow.init(); //устанавливаем графическую оболочку
+        Game game = new Game();
+        game.start(); //начинаем игру
 
     }
 }

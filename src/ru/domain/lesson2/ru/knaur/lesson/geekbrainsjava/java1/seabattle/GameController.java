@@ -5,7 +5,7 @@ public class GameController {
     public enum playerShoot {МИМО, ПОПАЛ, НЕТ_ВЫСТРЕЛА}
 
 
-
+//синглетон
   private static GameController instance;
 
   private GameController(){}

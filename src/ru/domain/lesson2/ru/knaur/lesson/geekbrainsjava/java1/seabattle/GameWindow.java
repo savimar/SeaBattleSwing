@@ -121,7 +121,10 @@ public class GameWindow {
         panelSub1Horizontal = new MyJPanel("1", 400, 20);
 
         panelSub1Horizontal.setLayout(new GridLayout(1, 11, 2, 2));
-        panelSub1Horizontal.add(new MyJButton());
+        btnMultiply = new MyJButton();
+        btnMultiply.setIcon(new ImageIcon("boat.png"));
+
+       panelSub1Horizontal.add(btnMultiply);
         panelSub1Horizontal.add(new MyJButton("A", true));
         panelSub1Horizontal.add(new MyJButton("Б", true));
         panelSub1Horizontal.add(new MyJButton("В", true));

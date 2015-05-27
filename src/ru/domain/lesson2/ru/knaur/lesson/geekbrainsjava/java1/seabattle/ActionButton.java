@@ -15,19 +15,12 @@ public class ActionButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-
-        // GameController.doShoot();
         setShootPlayer(this.x, this.y, this);
-
-
-
     }
 
     public ActionButton(int x, int y) {
         this.x = x;
         this.y = y;
-
-
     }
 
     public ActionButton() {
@@ -35,15 +28,10 @@ public class ActionButton implements ActionListener {
 
     public ActionButton(boolean isStart) {
         this.isStart = isStart;
-
     }
 
     public static void setShootPlayer(int x, int y, ActionButton actionButton) {
         Cell shootCell = new Cell(x, y);//получаем координаты выстрела, введееного игроком
-        /*if (shootCell.getY() > 9 || shootCell.getY() > 9) {
-            System.out.println("Вы ввели неправильные координаты, введите еще раз");*/
-        // isWinner = false;
-        //  continue;
 
         switch (Game.cellsComputer[x][y].value) { //проверка координат, введенных игроком
             case 'X':
@@ -67,32 +55,22 @@ public class ActionButton implements ActionListener {
         if (!isWinner)
 //TODO вместо isShoot сделать засыпание и просыпангие потоков
         {
-          /*  Scanner sc = new Scanner(System.in);
-            String s = sc.nextLine();*/
-
-
             printField(Game.cellsPlayer); // показываем полу игрока
             isWinner = isExit(Game.cellsComputer);// проверка на конец игры
 
-            if (!isWinner) {
-             /*   System.out.println();
-                System.out.println("Введите координаты выстрела еще раз");*/
+            if (isWinner) //конец игры
+            {
+                Player.score *= 2.5;
+                if (Player.score > Game.scoreComputer)
+                    System.out.println("Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
+                else if (Player.score == Game.scoreComputer)
+                    System.out.println("Ничья, У вас и компьютера " + Game.scoreComputer + "очков");
+                else
+                    System.out.println("К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
+                System.out.println();
+                System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
+                printField(Game.cellsComputer); //выводим поле компьютера
             }
-        }
-
-
-        if (isWinner) //конец игры
-        {
-            Player.score *= 2.5;
-            if (Player.score > Game.scoreComputer)
-                System.out.println("Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
-            else if (Player.score == Game.scoreComputer)
-                System.out.println("Ничья, У вас и компьютера " + Game.scoreComputer + "очков");
-            else
-                System.out.println("К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
-            System.out.println();
-            System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
-            printField(Game.cellsComputer); //выводим поле компьютера
         }
     }
 
