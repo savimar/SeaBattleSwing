@@ -16,27 +16,32 @@ public class ActionButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!isStart) {
+
             String str = "";
             String buttonText = "";
             Color color = null;
-            String s = e.getActionCommand();
-  //          e.getSource();
-            setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрока
-            if (getShoot.equals("МИМО"))
-            {
+
+            try {
+                setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрока
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
+
+
+            if (getShoot.equals("МИМО")) {
                 str = "Мимо!";
                 buttonText = "-";
                 color = Color.RED;
-            }
-               else if (getShoot.equals("ПОПАЛ")) {
+            } else if (getShoot.equals("ПОПАЛ")) {
                 str = "Попал!";
                 buttonText = "+";
                 color = Color.blue;
             }
 
-                JOptionPane.showMessageDialog(null,  str, "выстрел", JOptionPane.PLAIN_MESSAGE);
+           if (!isWinner) JOptionPane.showMessageDialog(null, str, "выстрел", JOptionPane.PLAIN_MESSAGE);
 
-               GameWindow.jtxtResult.setText(str);
+
+            GameWindow.jtxtResult.setText(str);
             if (e.getSource() instanceof JButton) {
                 MyJButton btn = (MyJButton) e.getSource();
                 Font f = new Font("Courier", Font.BOLD, 18);
@@ -47,7 +52,7 @@ public class ActionButton implements ActionListener {
 
             }
 
-            } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
+        } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
             Game game = new Game();
             game.start(); //начинаем игру
         }
@@ -65,52 +70,62 @@ public class ActionButton implements ActionListener {
         this.isStart = isStart;
     }
 
-    public static void setShootPlayer(int x, int y, ActionButton actionButton) {
+    public static void setShootPlayer(int x, int y, ActionButton actionButton) throws InterruptedException {
         Cell shootCell = new Cell(x, y);//получаем координаты выстрела, введееного игроком
         printField(Game.cellsComputer);
-        switch (Game.cellsComputer[x][y].value) { //проверка координат, введенных игроком
-            case 'X':
-                System.out.println("Попал");
-                Player.score++;
-                Game.cellsComputer[shootCell.getX()][shootCell.getY()].value = '+';
-                Game.cellsPlayer[shootCell.getX()][shootCell.getY()].value = '+';
 
-                actionButton.getShoot = GameController.playerShoot.ПОПАЛ.name();
-
-                break;
-            default:
-                System.out.println("Мимо");
-                Game.cellsComputer[shootCell.getX()][shootCell.getY()].value = '-';
-                Game.cellsPlayer[shootCell.getX()][shootCell.getY()].value = '-';
-                Game.scoreComputer++;
-                actionButton.getShoot = GameController.playerShoot.МИМО.name();
-
-                break;
-        }
         if (!isWinner)
-//TODO вместо isShoot сделать засыпание и просыпангие потоков
+        //TODO вместо isShoot сделать засыпание и просыпангие потоков
         {
-            printField(Game.cellsPlayer); // показываем полу игрока
+
+            switch (Game.cellsComputer[x][y].value) { //проверка координат, введенных игроком
+                case 'X':
+                    System.out.println("Попал");
+                    Player.score++;
+                    Game.cellsComputer[shootCell.getX()][shootCell.getY()].value = '+';
+                    Game.cellsPlayer[shootCell.getX()][shootCell.getY()].value = '+';
+                    actionButton.getShoot = GameController.playerShoot.ПОПАЛ.name();
+
+                    break;
+                default:
+                    System.out.println("Мимо");
+                    Game.cellsComputer[shootCell.getX()][shootCell.getY()].value = '-';
+                    Game.cellsPlayer[shootCell.getX()][shootCell.getY()].value = '-';
+                    Game.scoreComputer++;
+                    actionButton.getShoot = GameController.playerShoot.МИМО.name();
+
+                    break;
+            }
+
+            printField(Game.cellsPlayer); // показываем поле игрока
+
             isWinner = isExit(Game.cellsComputer);// проверка на конец игры
 
-            if (isWinner) //конец игры
-            {
-                String str = "";
-                Player.score *= 2.5;
-                if (Player.score > Game.scoreComputer)
-                   str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
-                else if (Player.score == Game.scoreComputer)
+
+        }
+        if (isWinner) //конец игры
+        {
+            String str = "";
+            Player.score *= 2.5;
+            if (Player.score > Game.scoreComputer)
+                str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
+            else if (Player.score == Game.scoreComputer)
                 str = "Ничья, У вас и компьютера " + Game.scoreComputer + "очков";
             else
-                str ="К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
-                System.out.println();
-                JOptionPane.showMessageDialog(null, str, "кто выиграл", JOptionPane.PLAIN_MESSAGE);
-                 GameWindow.jtxtResult.setText(str);
-                System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
-                printField(Game.cellsComputer); //выводим поле компьютера
-            }
+                str = "К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
+            System.out.println();
+
+            GameWindow.jtxtResult.setText(str);
+            System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
+            printField(Game.cellsComputer); //выводим поле компьютера
+        //    thread.join(1000);
+            JOptionPane.showMessageDialog(null, str, "Кто выиграл", JOptionPane.INFORMATION_MESSAGE);
+
+
+
         }
     }
+
 
     public static Boolean isExit(Cell[][] cells) { //если игра закончилась
         for (int i = 0; i < cells.length; i++) {
