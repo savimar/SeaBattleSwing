@@ -1,5 +1,7 @@
 package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,9 +16,38 @@ public class ActionButton implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (!isStart) {
+            String str = "";
+            String buttonText = "";
+            Color color = null;
             String s = e.getActionCommand();
+  //          e.getSource();
             setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрока
-        } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
+            if (getShoot.equals("МИМО"))
+            {
+                str = "Мимо!";
+                buttonText = "-";
+                color = Color.RED;
+            }
+               else if (getShoot.equals("ПОПАЛ")) {
+                str = "Попал!";
+                buttonText = "+";
+                color = Color.blue;
+            }
+
+                JOptionPane.showMessageDialog(null,  str, "выстрел", JOptionPane.PLAIN_MESSAGE);
+
+               GameWindow.jtxtResult.setText(str);
+            if (e.getSource() instanceof JButton) {
+                MyJButton btn = (MyJButton) e.getSource();
+                Font f = new Font("Courier", Font.BOLD, 18);
+
+                btn.setFont(f);
+                btn.setForeground(color);
+                btn.setText(buttonText);
+
+            }
+
+            } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
             Game game = new Game();
             game.start(); //начинаем игру
         }
@@ -36,7 +67,7 @@ public class ActionButton implements ActionListener {
 
     public static void setShootPlayer(int x, int y, ActionButton actionButton) {
         Cell shootCell = new Cell(x, y);//получаем координаты выстрела, введееного игроком
-
+        printField(Game.cellsComputer);
         switch (Game.cellsComputer[x][y].value) { //проверка координат, введенных игроком
             case 'X':
                 System.out.println("Попал");
@@ -64,14 +95,17 @@ public class ActionButton implements ActionListener {
 
             if (isWinner) //конец игры
             {
+                String str = "";
                 Player.score *= 2.5;
                 if (Player.score > Game.scoreComputer)
-                    System.out.println("Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
+                   str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
                 else if (Player.score == Game.scoreComputer)
-                    System.out.println("Ничья, У вас и компьютера " + Game.scoreComputer + "очков");
-                else
-                    System.out.println("К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков");
+                str = "Ничья, У вас и компьютера " + Game.scoreComputer + "очков";
+            else
+                str ="К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
                 System.out.println();
+                JOptionPane.showMessageDialog(null, str, "кто выиграл", JOptionPane.PLAIN_MESSAGE);
+                 GameWindow.jtxtResult.setText(str);
                 System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
                 printField(Game.cellsComputer); //выводим поле компьютера
             }

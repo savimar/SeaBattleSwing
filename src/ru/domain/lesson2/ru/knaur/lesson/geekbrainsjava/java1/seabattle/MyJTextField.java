@@ -12,14 +12,14 @@ public class MyJTextField extends JTextField {
 
     public MyJTextField(int columns) {
         super.setColumns(columns);
-        Font font = new Font("Courier", Font.ITALIC, 12);
+        Font font = new Font("Courier", Font.PLAIN, 12);
         super.setFont(font);
-        super.setForeground(Color.GRAY);
+        super.setForeground(Color.BLACK);
     }
 
     public MyJTextField(int columns, Color textColor) {
         super.setColumns(columns);
-        Font font = new Font("Courier", Font.ITALIC, 12);
+        Font font = new Font("Courier", Font.PLAIN, 12);
         super.setFont(font);
         super.setForeground(textColor);
     }

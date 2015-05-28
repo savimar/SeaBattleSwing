@@ -12,11 +12,11 @@ public class GameWindow {
     //элементы графической оболочки
     private MyJButton start;
     public MyJButton btnPlay;
-    private MyJTextField jtxtResult;
+    public  static MyJTextField jtxtResult;
     private MyJPanel panel1;
     // private MyJPanel panel2;
     private MyJPanel panel3;
-    private MyJPanel panelSub1;
+    private   MyJPanel panelSub1;
     private MyJPanel panelSub1Horizontal;
     private MyJPanel panelSub1Vertical;
     public MyJButton[] myJButtons = new MyJButton[100]; //массив мгровых кнопок
@@ -61,7 +61,7 @@ public class GameWindow {
     }*/
 
     private void createTextFields() {
-        jtxtResult = new MyJTextField(15, Color.RED); // текстовое поле для отображения ответов компьютера
+        jtxtResult = new MyJTextField(15, Color.BLACK); // текстовое поле для отображения ответов компьютера
         jtxtResult.setEditable(false);
         jtxtResult.setFocusable(false);
 
