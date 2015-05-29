@@ -1,6 +1,5 @@
 package ru.knaur.lesson.geekbrainsjava.java1.seabattle;
 
-
 import com.jtattoo.plaf.mint.MintLookAndFeel;
 
 import javax.swing.*;
@@ -11,17 +10,21 @@ import java.util.logging.Logger;
 public class GameWindow {
     //элементы графической оболочки
     private MyJButton start;
-    public MyJButton btnPlay;
-    private MyJTextField jtxtResult;
+    private MyJButton btnPlay;
+    private MyJButton restart;
+    private MyJButton exit;
+    private MyJButton abort;
+    //  private Box b;
+    private JToolBar b;
+    public static MyJTextField jtxtResult;
     private MyJPanel panel1;
     // private MyJPanel panel2;
     private MyJPanel panel3;
     private MyJPanel panelSub1;
     private MyJPanel panelSub1Horizontal;
     private MyJPanel panelSub1Vertical;
-    public MyJButton[] myJButtons = new MyJButton[100]; //массив мгровых кнопок
-
-//    private MyJPanel panelSub2;
+    private MyJButton[] myJButtons = new MyJButton[100]; //массив мгровых кнопок
+    private MyJPanel panelSub2;
 
     private MyJFrame frame;
 
@@ -61,16 +64,37 @@ public class GameWindow {
     }*/
 
     private void createTextFields() {
-        jtxtResult = new MyJTextField(15, Color.RED); // текстовое поле для отображения ответов компьютера
+        jtxtResult = new MyJTextField(15, Color.BLACK); // текстовое поле для отображения ответов компьютера
         jtxtResult.setEditable(false);
         jtxtResult.setFocusable(false);
 
     }
 
     private void createButtons() {
+
         start = new MyJButton("Старт");// кнопка старт
         start.setSize(new Dimension(200, 50));
         start.addActionListener(new ActionButton(true));
+        abort = new MyJButton("Прервать");// кнопка прервать
+        abort.setSize(new Dimension(200, 50));
+        abort.addActionListener(new ActionButton());
+        restart = new MyJButton("Перезапуск");// кнопка перезапуск
+        restart.setSize(new Dimension(200, 50));
+        //    restart.addActionListener(new ActionButton());
+        exit = new MyJButton("Выход");// кнопка выход
+        exit.setSize(new Dimension(200, 50));/**/
+        // exit.addActionListener(new ActionButton());
+        b = new JToolBar();
+        //  b = Box.createHorizontalBox();
+        b.add(start);
+        b.addSeparator();
+        b.add(abort);
+        b.addSeparator();
+        b.add(restart);
+        b.addSeparator();
+        b.add(exit);
+        b.addSeparator();
+
         int k = 0;
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {// кнопки игрового поля
@@ -125,9 +149,10 @@ public class GameWindow {
         panel3.setPreferredSize(new Dimension(100, 30));
         panel3.setLayout(new FlowLayout(FlowLayout.LEFT)); //панель для кнопки старт
         //  panel3.add(labelResult);
-        panel3.add(start); //добавление кнопки старт
+       /* panel3.add(start); //добавление кнопки старт
+        panel3.add(abort);*/
         //  panel3.add(jtxtResult);
-
+        panel3.add(b);
 
         panel1.add(panelSub1Horizontal, BorderLayout.NORTH);
 
