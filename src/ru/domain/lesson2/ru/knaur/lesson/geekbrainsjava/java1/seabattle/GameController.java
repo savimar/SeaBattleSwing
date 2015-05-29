@@ -20,7 +20,7 @@ public class GameController {
         return instance;
     }
 
-public static void setShootPlayer(int x, int y, ActionButton actionButton) throws InterruptedException {
+    public static void setShootPlayer(int x, int y, ActionButton actionButton) throws InterruptedException {
         Cell shootCell = new Cell(x, y);//получаем координаты выстрела, введееного игроком
         printField(Game.cellsComputer);
 
@@ -55,7 +55,7 @@ public static void setShootPlayer(int x, int y, ActionButton actionButton) throw
         }
         if (isWinner) //конец игры
         {
-            String str = "";
+            String str;
             Player.score *= 2.5;
             if (Player.score > Game.scoreComputer)
                 str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + Game.scoreComputer + " очков";
@@ -68,9 +68,8 @@ public static void setShootPlayer(int x, int y, ActionButton actionButton) throw
             GameWindow.jtxtResult.setText(str);
             System.out.println("Корабли были расположены так: (X - корабль, 0 - ореол вокруг корабля, - - не попавшие выстрелы, + - попавшие выстрелы )");
             printField(Game.cellsComputer); //выводим поле компьютера
-        //    thread.join(1000);
+            //    thread.join(1000);
             JOptionPane.showMessageDialog(null, str, "Кто выиграл", JOptionPane.INFORMATION_MESSAGE);
-
 
 
         }
@@ -82,6 +81,8 @@ public static void setShootPlayer(int x, int y, ActionButton actionButton) throw
             for (int j = 0; j < cells.length; j++)
                 if (cells[i][j].value == 'X') {
                     i = 11;
+                    j = 11;
+
                     return false;
                 }
         }
