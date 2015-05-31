@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,6 @@ public class MyJDialog extends JDialog {
     public MyJDialog(String title, int width, int height, Component comp) {
         this(title, width, height);
         super.getContentPane().add(comp);
-
     }
 
     public MyJDialog(String title, int width, int height, LayoutManager layout) {

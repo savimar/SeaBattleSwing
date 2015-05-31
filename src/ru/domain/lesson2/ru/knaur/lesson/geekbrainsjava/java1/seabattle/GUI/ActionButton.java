@@ -1,4 +1,7 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.GUI;
+
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics.MyJButton;
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics.Game;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +13,7 @@ public class ActionButton implements ActionListener {
     public int y = -1;
     boolean isStart = false;
     public static String getShoot = GameController.playerShoot.НЕТ_ВЫСТРЕЛА.name();
+    public static String shipShoot = GameController.shipShoot.МИМО.name();
 
 
     @Override
@@ -25,6 +29,7 @@ public class ActionButton implements ActionListener {
             String str = "";
             String buttonText = "";
             Color color = null;
+            SoundPlayer sp = new SoundPlayer("44.wav");
 
             try {
                 GameController.setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрок
@@ -38,7 +43,9 @@ public class ActionButton implements ActionListener {
                 buttonText = "-";
                 color = Color.RED;
             } else if (getShoot.equals("ПОПАЛ")) {
-                str = "Попал!";
+                GameController.getWounded(this.x, this.y, this);
+                if (this.shipShoot.equals("РАНЕН")) str = "Ранен";
+                else str = "Убит";
                 buttonText = "+";
                 color = Color.BLUE;
             }
@@ -55,7 +62,6 @@ public class ActionButton implements ActionListener {
                 btn.setFont(f);
                 btn.setForeground(color);
                 btn.setText(buttonText);
-
             }
 
         } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта

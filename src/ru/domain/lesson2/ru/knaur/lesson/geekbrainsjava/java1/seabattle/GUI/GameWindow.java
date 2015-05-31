@@ -1,7 +1,11 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.GUI;
 
 
 import com.jtattoo.plaf.mint.MintLookAndFeel;
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics.MyJButton;
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics.MyJFrame;
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics.MyJPanel;
+import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics.MyJTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -38,19 +42,19 @@ public class GameWindow {
             Logger.getLogger(GameWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-           /* try {
+        /*try {
 
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); // выбор скрина из стиля ОС
-            } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
+        } catch (InstantiationException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            */
+        }*/
+
         GameWindow nCl = new GameWindow();//старт заполнения графической оболочки
         //   nCl.createLabels();
         nCl.createTextFields();
@@ -61,8 +65,7 @@ public class GameWindow {
     }
 
    /* private void createLabels() { //надписи
-
-    }*/
+ }*/
 
     private void createTextFields() {
         jtxtResult = new MyJTextField(15, Color.BLACK); // текстовое поле для отображения ответов компьютера
@@ -104,13 +107,8 @@ public class GameWindow {
                 k++;
                 ActionButton actionButton = new ActionButton(i, j);
                 btnPlay.addActionListener(actionButton);
-                if (actionButton.getShoot.equals(GameController.playerShoot.ПОПАЛ)) btnPlay.setText("+");
-                else if (actionButton.getShoot.equals(GameController.playerShoot.МИМО)) btnPlay.setText("-");
-
             }
         }
-
-
     }
 
     private void createPanels() {
@@ -158,7 +156,7 @@ public class GameWindow {
         panel1.add(panelSub1Horizontal, BorderLayout.NORTH);
 
 
-        panelSub1Vertical = new MyJPanel("1", 400, 20); //панель для цифр
+        panelSub1Vertical = new MyJPanel("1", 400, 15); //панель для цифр
 
         panelSub1Vertical.setLayout(new GridLayout(10, 1, 2, 2));
         // panelSub1Vertical.add(new MyJButton(" ", true));

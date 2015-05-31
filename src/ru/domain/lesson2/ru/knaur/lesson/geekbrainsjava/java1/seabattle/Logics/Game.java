@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics;
 
 public class Game {
     public static Cell[][] cellsComputer = new Cell[10][10];
@@ -8,12 +8,10 @@ public class Game {
 
     public void start() {
         System.out.println("Начинаем игру");
-
         Field field = new Field();
 
         cellsComputer = field.setCells(cellsComputer); //вводим игровое поле компьютера
         cellsPlayer = field.setCells(cellsPlayer); //вводим поле игрока
-
         cellsComputer = field.setShips(cellsComputer); //устанавливаем корабли на поле компьютера
 
     }

@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics;
 
 import javax.swing.*;
 import java.awt.*;

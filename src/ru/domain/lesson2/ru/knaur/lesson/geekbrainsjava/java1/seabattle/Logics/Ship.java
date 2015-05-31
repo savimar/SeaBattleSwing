@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics;
 
 public class Ship {
     private int desk; //количество палуб
@@ -6,6 +6,9 @@ public class Ship {
     private Cell rightDown; //правая нижняя точка корабля
     private boolean isRoute;// горизонтальное положение корабля = истина
     public boolean isShipDelivered; //корабль есть на поле
+    public boolean isWounded; // ранен ли корабль
+    public boolean isKilled; // убит ли корабль
+    public String[] shipCells;
 
     public Ship(int desk, Cell cell, boolean isRoute) {
         this.desk = desk;
@@ -16,6 +19,7 @@ public class Ship {
         } else { //
             rightDown = new Cell(leftUp.getX(), leftUp.getY() + desk - 1);
         }
+        shipCells = new String[desk];
     }
 
     public Cell getRightDown() {

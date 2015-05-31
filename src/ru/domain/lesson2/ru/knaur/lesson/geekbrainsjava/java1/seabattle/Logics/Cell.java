@@ -1,10 +1,10 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics;
 
 
 public class Cell {
     private int x;
     private int y;
-    char value;
+    public char value;
 
     public Cell(char value) {
         this.value = value;

@@ -1,5 +1,7 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class Field {
@@ -7,8 +9,7 @@ public class Field {
     final int COUNT_SHIPS2 = 3;
     final int COUNT_SHIPS3 = 2;
     final int COUNT_SHIPS4 = 1;
-
-
+    public static Map<String, Ship> ships = new HashMap<>();
 
     public Cell[][] setCells(Cell[][] cells) {
         for (int i = 0; i < cells.length; i++) {
@@ -69,10 +70,8 @@ public class Field {
         int x = cell.getX();
         int y = cell.getY();
 
-
         if (isRoute) {
             setRouteTrue(cells, x, ship, y);
-
         } else {
             setRouteFalse(cells, x, ship, y);
         }
@@ -108,34 +107,36 @@ public class Field {
                 }
 
                 cells[z][y].value = 'X'; //устанавливаем корабль
+                ships.put("" + z + "/" + y, ship);
+                ship.shipCells[h] = "" + z + "/" + y;
             }
 
-
-            for (int j = 0; j < desks; j++) {
-
-
-                for (int f = x + j - 1; f <= x + j + 1; f++) { //устанавливаем ореол вокруг корабля
-                    if (f < 0) f = 0;
-                    for (int k = y - 1; k <= y + 1; k++) {
-                        if (k < 0) k = 0;
-                        if (k > 9 || f > 9) {
-                            if (k > 9) k = 9;
-                            if (f > 9) f = 9;
-                            if (cells[f][k].value != 'X')
-                                cells[f][k].value = '0';
-
-                        }
-                        if (cells[f][k].value != 'X')
-                            cells[f][k].value = '0';
-                        if (k == 9) k = 10;
-                        if (f == 9) f = 10;
-                    }
-                }
-            }
         }
 
 
+        for (int j = 0; j < desks; j++) {
+
+
+            for (int f = x + j - 1; f <= x + j + 1; f++) { //устанавливаем ореол вокруг корабля
+                if (f < 0) f = 0;
+                for (int k = y - 1; k <= y + 1; k++) {
+                    if (k < 0) k = 0;
+                    if (k > 9 || f > 9) {
+                        if (k > 9) k = 9;
+                        if (f > 9) f = 9;
+                        if (cells[f][k].value != 'X')
+                            cells[f][k].value = '0';
+
+                    }
+                    if (cells[f][k].value != 'X')
+                        cells[f][k].value = '0';
+                    if (k == 9) k = 10;
+                    if (f == 9) f = 10;
+                }
+            }
+        }
     }
+
 
     public void setRouteFalse(Cell[][] cells, int x, Ship ship, int y) { // установка вертикального корабля
         int desks = ship.getDesk();
@@ -163,36 +164,34 @@ public class Field {
                     break;
                 }
                 cells[x][z].value = 'X'; //устанавливаем корабль
-            }
-
-
-            for (int j = 0; j < desks; j++) { //устанавливаем ореол вокруг корабля
-
-
-                for (int f = x - 1; f <= x + 1; f++) {
-                    if (f < 0) f = 0;
-
-                    for (int k = y + j - 1; k <= y + j + 1; k++) {
-                        if (k < 0) k = 0;
-                        if (k > 9 || f > 9) {
-                            if (k > 9) k = 9;
-                            if (f > 9) f = 9;
-                            if (cells[f][k].value != 'X')
-                                cells[f][k].value = '0';
-                        }
-                        if (cells[f][k].value != 'X')
-                            cells[f][k].value = '0';
-                        if (k == 9) k = 10;
-                        if (f == 9) f = 10;
-                    }
-                }
-
+                ships.put("" + x + "/" + z, ship);
+                ship.shipCells[h] = "" + x + "/" + z;
             }
         }
 
 
+        for (int j = 0; j < desks; j++) { //устанавливаем ореол вокруг корабля
+            for (int f = x - 1; f <= x + 1; f++) {
+                if (f < 0) f = 0;
 
+                for (int k = y + j - 1; k <= y + j + 1; k++) {
+                    if (k < 0) k = 0;
+                    if (k > 9 || f > 9) {
+                        if (k > 9) k = 9;
+                        if (f > 9) f = 9;
+                        if (cells[f][k].value != 'X')
+                            cells[f][k].value = '0';
+                    }
+                    if (cells[f][k].value != 'X')
+                        cells[f][k].value = '0';
+                    if (k == 9) k = 10;
+                    if (f == 9) f = 10;
+                }
+            }
+
+        }
     }
+
 
     public Cell shootCell(int x, int y) { //получаем координы ячейки, которые ввел игрок
        /* String subS1 = s.substring(0, 1);

@@ -1,4 +1,4 @@
-package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle;
+package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Grafics;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ public class MyJButton extends JButton {
 
     public MyJButton(String title) {
         super.setText(title);
-    }
+        }
 
 
     public MyJButton(String title, int width, int height) {
@@ -24,10 +24,10 @@ public class MyJButton extends JButton {
         Font f = new Font("Courier", Font.BOLD, 14);
         this.setFont(f);
         this.setBackground(Color.CYAN);
-        this.setForeground(Color.darkGray);
+        this.setForeground(Color.MAGENTA);
         super.setMinimumSize(new Dimension(10, 10));
         super.setSize(25, 25);
-
+        super.setBorderPainted(true);
     }
 
     public MyJButton() {
