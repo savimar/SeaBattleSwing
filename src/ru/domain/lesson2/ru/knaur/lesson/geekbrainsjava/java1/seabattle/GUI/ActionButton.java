@@ -29,7 +29,7 @@ public class ActionButton implements ActionListener {
             String str = "";
             String buttonText = "";
             Color color = null;
-            SoundPlayer sp = new SoundPlayer("44.wav");
+            SoundPlayer.playSound("44.wav").join();
 
             try {
                 GameController.setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрок
