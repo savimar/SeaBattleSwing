@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: /JTattoo-1.6.11.jar
-Main-Class: ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.sea
- battle.Main
-

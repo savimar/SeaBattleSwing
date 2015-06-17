@@ -38,7 +38,7 @@ public class ActionButton implements ActionListener {
 
                 try {
                     GameController.setShootPlayer(this.x, this.y, this); //игровой цикл получения координат игрок
-                     } catch (Exception e1) {
+                } catch (Exception e1) {
                     e1.printStackTrace();
                 }
 
@@ -55,7 +55,7 @@ public class ActionButton implements ActionListener {
                         str = "Ранен";
                         path = "c://44.wav";
                         buttonText = "+";
-                    color = Color.BLUE;
+                        color = Color.BLUE;
                     } else {
                         str = "Убит";
                         buttonText = "+";
@@ -66,8 +66,7 @@ public class ActionButton implements ActionListener {
 
                 if (!GameController.isWinner) {
 
-                    JOptionPane.showMessageDialog(null, str, "выстрел", JOptionPane.PLAIN_MESSAGE);
-                     File wavFile = new File(path);
+                    File wavFile = new File(path);
                     AudioClip sound = null;
                     try {
 
@@ -77,7 +76,7 @@ public class ActionButton implements ActionListener {
                     }
                     sound.play();
                 }
-
+                JOptionPane.showMessageDialog(null, str, "выстрел", JOptionPane.PLAIN_MESSAGE);
 
 
                 if (!GameController.isWinner) GameWindow.jtxtResult.setText(str);
@@ -89,9 +88,6 @@ public class ActionButton implements ActionListener {
                     btn.setForeground(color);
                     btn.setText(buttonText);
 
-                     File wavFile = new File(path);
-
-
                 } else if (isStart && (Game.cellsComputer[0][0] == null)) { //если нажата кнопка старта
                     Game game = new Game();
                     game.start(); //начинаем игру
@@ -101,17 +97,17 @@ public class ActionButton implements ActionListener {
     }
 
 
-        public ActionButton( int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-
-        public ActionButton() {
-        }
-
-        public ActionButton( boolean isStart){
-            this.isStart = isStart;
-        }
-
-
+    public ActionButton(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
+
+    public ActionButton() {
+    }
+
+    public ActionButton(boolean isStart) {
+        this.isStart = isStart;
+    }
+
+
+}

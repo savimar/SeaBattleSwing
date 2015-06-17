@@ -3,6 +3,7 @@ package ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.GUI;
 import ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics.*;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.Map;
 
 import static ru.domain.lesson2.ru.knaur.lesson.geekbrainsjava.java1.seabattle.Logics.Game.*;
@@ -13,6 +14,7 @@ public class GameController {
     public enum shipShoot {МИМО, УБИТ, РАНЕН} //перечисление выстрелов
 
     public static boolean isWinner = false;
+
 
     //синглетон
     private static GameController instance;
@@ -59,6 +61,8 @@ public class GameController {
         if (isWinner) //конец игры
         {
             String str;
+            Font f = new Font("Courier", Font.BOLD, 18);
+
             Player.score *= 2.5;
             if (Player.score > scoreComputer)
                 str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + scoreComputer + " очков";

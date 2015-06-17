@@ -24,7 +24,7 @@ public class MyJButton extends JButton {
         Font f = new Font("Courier", Font.BOLD, 14);
         this.setFont(f);
         this.setBackground(Color.CYAN);
-        this.setForeground(Color.MAGENTA);
+        this.setForeground(Color.DARK_GRAY);
         super.setMinimumSize(new Dimension(10, 10));
         super.setSize(25, 25);
         super.setBorderPainted(true);
