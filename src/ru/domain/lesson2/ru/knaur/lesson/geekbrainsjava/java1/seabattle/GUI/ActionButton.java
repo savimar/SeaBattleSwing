@@ -26,6 +26,8 @@ public class ActionButton implements ActionListener {
             if (thread.isAlive()) {
                 thread.interrupt();
             }*/
+        } else if (e.getActionCommand().equals("Выход")) {
+            System.exit(0);
         } else {
             if (!isStart) {
 
