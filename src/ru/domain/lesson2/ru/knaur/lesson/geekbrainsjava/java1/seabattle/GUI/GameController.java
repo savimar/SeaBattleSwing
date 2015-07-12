@@ -63,13 +63,14 @@ public class GameController {
             String str;
             Font f = new Font("Courier", Font.BOLD, 18);
 
-            Player.score *= 2.5;
-            if (Player.score > scoreComputer)
-                str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков. У противника " + scoreComputer + " очков";
-            else if (Player.score == scoreComputer)
-                str = "Ничья, У вас и компьютера " + scoreComputer + "очков";
-            else
-                str = "К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + scoreComputer + " очков";
+       //     Player.score *= 2.5;
+        //    if (Player.score > scoreComputer)
+                str = "Поздравляю, Вы победили! У Вас " + Player.score + " очков.";
+           //             " противника " + scoreComputer + " очков";
+//            else if (Player.score == scoreComputer)
+//                str = "Ничья, У вас и компьютера " + scoreComputer + "очков";
+//            else
+//                str = "К сожалению, Вы проиграли...У Вас " + Player.score + " очков. У противника " + scoreComputer + " очков";
             System.out.println();
 
             GameWindow.jtxtResult.setText(str);
@@ -105,8 +106,7 @@ public class GameController {
             if (i == 10) System.out.print((i + "  "));
             else System.out.print(i + "   ");
 
-            for (Cell cell1 : cell) {
-                System.out.print(cell1.value + " ");
+            for (Cell cell1 : cell) {System.out.print(cell1.value + " ");
             }
             System.out.println();
             i++;
