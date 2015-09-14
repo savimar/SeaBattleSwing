@@ -25,7 +25,6 @@ public class Ship {
     public Cell getRightDown() {
         return rightDown;
     }
-
     public void setRightDown(Cell rightDown) {
         this.rightDown = rightDown;
     }

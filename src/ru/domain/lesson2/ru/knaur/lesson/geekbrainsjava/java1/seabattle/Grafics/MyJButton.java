@@ -31,6 +31,7 @@ public class MyJButton extends JButton {
     }
 
     public MyJButton() {
+
     }
 
     public MyJButton(Icon icon) {
